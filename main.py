@@ -1,6 +1,6 @@
 import cv2
 from fps import fps
-from changingSlides import slides,countOfSlides
+from slides import slides,countOfSlides
 from slidesCounter import slideCounter
 from poseDetection import poseDetection
 handAtEnd=False
@@ -10,16 +10,22 @@ handAtBeginning=False
         #dopisac rozpoznawanie odpowiedniej pozycji reki na podstawie results.pose_landmarks
         #pozycja reki jak do przesuwania w prawo slajdu
         #dopisac ostrzeżenie o zbyt malej odleglosci
-DEBUG = True
-if_flip=True
-print_Hands=True
+
+#TODO
+#TODO aby uruchomić aplikację z wykorzystaniem kamerki z laptopa należy zakomentować linię 29 i odkomentować linię 28
+#TODO w przypadku gdy obraz jest odwócony należy zmienić zmienną if_flip na przeciwny
+#TODO
+
+
+DEBUG = True # show fps on screen while debug is true
+if_flip=False # flip image horizontally if if_flip is true
 i=1
 print(f"DEBUG:{DEBUG}")
 # fps dziala
 slideCounter(slides[0], i, countOfSlides) #first position of countOfSlides
 cv2.imshow("Slide",slides[0])#first slide
-cap=cv2.VideoCapture(0)
-#cap=cv2.VideoCapture("video-1646058581.mp4")
+# cap=cv2.VideoCapture(0)
+cap=cv2.VideoCapture("video-1647700348.mp4")
 while True:
     ret, img=cap.read()
     flipcode=1
